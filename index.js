@@ -10,7 +10,6 @@ const wire1 = wireStrip(input1);
 const wire2 = wireStrip(input2);
 
 
-
 function drawPath(arr) {
   let path = [];
   let x = 0;
@@ -18,19 +17,25 @@ function drawPath(arr) {
   arr.forEach(v => {
     if (v[0] === 'L') {
       for (let i = 1; i < v[1]; i++) {
-        x -= i
+        x--
         path.push(`${x}, ${y}`)
       }
     }
     if (v[0] === 'R') {
       for (let i = 1; i < v[1]; i++) {
-        x += i
+        x++
         path.push(`${x}, ${y}`)
       }
     }
     if (v[0] === 'U') {
       for (let i = 1; i < v[1]; i++) {
-        y += i
+        y++
+        path.push(`${x}, ${y}`)
+      }
+    }
+    if (v[0] === 'D') {
+      for (let i = 1; i < v[1]; i++) {
+        y--
         path.push(`${x}, ${y}`)
       }
     }
@@ -39,4 +44,4 @@ function drawPath(arr) {
   return path;
 }
 
-console.log(drawPath(wire1));
+console.log(drawPath(wire1))
